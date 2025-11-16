@@ -1,0 +1,2 @@
+# In this case, it doesn't make sense to create an auto-scaling resource since the maximum number of replicas is 2 and I'm already using them.
+#To do so, I would have created an aws_appautoscaling_target and aws_appautoscaling_policy.

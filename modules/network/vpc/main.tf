@@ -5,14 +5,17 @@ locals {
     "Region"      = data.aws_region.current.id
   }
 
-  vpc_id         = "vpc-897875e0"
+  vpc_id         = data.aws_vpc.default_vpc.id
 
   zone_ids = data.aws_availability_zones.available.zone_ids
   azs      = slice(sort(local.zone_ids), 0, var.total_availability_zones)
 
-  # NOTES:
+  # NOTE 1:
   # I'm using /24 for both public and private subnets for simplicity.
   # The first free address in the VPC is 172.31.48.0, that's why I'm starting with that one.
+  #
+  # NOTE 2:
+  # I would have created VPC flow logs but I don't have permissions to do so in this environment.
 
   # -------------------------------
   # Public subnets (/24)
@@ -66,6 +69,8 @@ module "public_subnet" {
   vpc_name              = var.vpc_name
   internet_gateway_id   = aws_internet_gateway.this.id
   tags                  = merge(local.default_tags, var.tags)
+
+  depends_on = [aws_internet_gateway.this]
 }
 
 ################################################################################

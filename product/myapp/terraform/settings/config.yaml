@@ -4,3 +4,13 @@ dev:
     vpc:
       main:
         cidr: 172.31.0.0/16
+  elb:
+    alb:
+      - name: api
+        app_port: 5000
+        listener_port: 80
+        protocol: HTTP
+  ecs:
+    myapp_cluster:
+      name: myapp
+      application_image: marcgrau99/myapp:dev-multi
