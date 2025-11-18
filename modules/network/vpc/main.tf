@@ -13,9 +13,6 @@ locals {
   # NOTE 1:
   # I'm using /24 for both public and private subnets for simplicity.
   # The first free address in the VPC is 172.31.48.0, that's why I'm starting with that one.
-  #
-  # NOTE 2:
-  # I would have created VPC flow logs but I don't have permissions to do so in this environment.
 
   # -------------------------------
   # Public subnets (/24)
@@ -96,3 +93,9 @@ module "private_subnet" {
     module.public_subnet
   ]
 }
+
+# NOTE 2:
+# I would have created VPC flow logs but I don't have permissions to do so in this environment.
+#
+# NOTE 3:
+# I'm using the default ACL, but in a real-world scenario, I would create custom ACLs for better security.

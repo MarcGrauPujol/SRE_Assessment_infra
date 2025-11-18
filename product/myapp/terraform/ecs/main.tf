@@ -15,3 +15,6 @@ module "ecs" {
   app_image   = local.ecs_myapp["application_image"]
   name        = local.ecs_myapp["name"]
 }
+
+# Note:
+# Because it is automatically deployed from the pipeline, this app image will no longer be the source of truth.

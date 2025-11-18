@@ -34,7 +34,7 @@ variable "ecs_task_name" {
 }
 
 variable "app_image" {
-  description = "La imagen de Docker de la aplicación helloworld."
+  description = "The image of the application container."
   type        = string
 }
 
@@ -67,3 +67,6 @@ variable "network_mode" {
   type        = string
   default     = "awsvpc" # Required for Fargate
 }
+
+# Note:
+# Once again, for convenience, I have left the default values that I need for this specific example. Normally, all product configurations would need to be defined in the configuration file and the value passed through variables.

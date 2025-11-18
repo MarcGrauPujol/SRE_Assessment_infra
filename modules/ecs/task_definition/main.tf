@@ -59,4 +59,6 @@ resource "aws_ecs_task_definition" "app" {
 }
 
 # Notes:
-# I would have created log groups but I don't have permissions to do it.
+# Again, I would have created log groups.
+#
+# Also, I think that the container definition should be passed as a variable to make the module more flexible.
